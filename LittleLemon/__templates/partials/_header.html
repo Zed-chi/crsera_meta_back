@@ -1,6 +1,6 @@
 {% load static %}
 <header>
-  <img src="{% static 'img/logo.png' %}" />
+  <img src="/media/logo.png" />
 </header>
 <nav>
   <ul>
@@ -9,5 +9,8 @@
     <li><a href="{% url 'menu' %}">Menu</a></li>
     <li><a href="{% url 'book' %}">Book</a></li>
     <li><a href="{% url 'bookings' %}">Reservations</a></li>
+    {% if request.user.is_staff %}
+    <li><a href="{% url 'bookings' %}">Admin</a></li>
+    {% endif %}
   </ul>
 </nav>
