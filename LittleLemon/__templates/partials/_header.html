@@ -10,7 +10,7 @@
     <li><a href="{% url 'book' %}">Book</a></li>
     <li><a href="{% url 'bookings' %}">Reservations</a></li>
     {% if request.user.is_staff %}
-    <li><a href="{% url 'bookings' %}">Admin</a></li>
+    <li><a href="/admin">Admin</a></li>
     {% endif %}
   </ul>
 </nav>
