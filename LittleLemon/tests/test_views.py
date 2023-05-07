@@ -1,4 +1,5 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
+
 from restaurant.models import Menu
 from restaurant.serializers import MenuItemSerializer
 
