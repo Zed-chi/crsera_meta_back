@@ -1,4 +1,4 @@
-# Capstone project from meta-back course
+# Capstone project for meta-back course
 
 ### Requirements:
 - python 3.8+
@@ -20,12 +20,12 @@ Registration[POST] - http://127.0.0.1:8000/api/auth/users/
 
 User Details[GET] - http://127.0.0.1:8000/api/auth/users/me/
 
-Login/TokenGet[POST] - http://127.0.0.1:8000/api/auth/token/login/
+Login/TokenGet[POST] - http://127.0.0.1:8000/api/auth/token/login/ or http://127.0.0.1:8000/api/api-token-auth/
 
 Logout[POST]- http://127.0.0.1:8000/api/auth/token/logout/
 
-Bookings[POST] - http://127.0.0.1:8000/api/bookings
+Bookings[POST] - http://127.0.0.1:8000/api/bookings/
 
 Menu List[GET/POST] - http://127.0.0.1:8000/api/menu/
 
-MenuItem[GET] - http://127.0.0.1:8000/api/menu/<int:pk>"
+MenuItem[GET] - http://127.0.0.1:8000/api/menu/<int:pk>/
