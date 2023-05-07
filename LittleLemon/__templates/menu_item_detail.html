@@ -1,5 +1,5 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <section>
    <article>
@@ -14,20 +14,17 @@
          <!--Begin col-->
          <div class="column">
             <h2>
-                {{ menu_item.name }}
+               {{ item.title }}
             </h2>
             <p>
-                {{ menu_item.menu_item_description }}
-            </p>
-            <p>
-                Price: ${{ menu_item.price }}.00
+               Price: ${{ item.price }}
             </p>
          </div>
          <!--End col-->
          <!--Begin col-->
          <div class="column">
-            <img src="/Final Assessment/littlelemon/restaurant/static/img/{{menu_item.name}}.jpg" alt="{{ menu_item.name}}" />
-        </div>
+            <img src="media/{{menu_item.name}}.jpg" alt="{{ menu_item.name}}" />
+         </div>
          <!--End col-->
       </div>
       <!--End row-->
