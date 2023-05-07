@@ -27,7 +27,13 @@
 <body>
   <!--Header content-->
   {% include 'partials/_header.html' %}
-
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   <main>{% block content %} {% endblock %}</main>
 
   <!--Footer content-->
