@@ -2,10 +2,17 @@ import json
 from datetime import datetime
 from django.core import serializers
 from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import (
+    render,
+    redirect,
+    reverse,
+    get_object_or_404,
+)
 from django.views.decorators.csrf import csrf_exempt
 from restaurant.forms import BookingForm
-from restaurant.models import Booking, Menu
+from restaurant.models import Booking, MenuItem, MenuCategory
+from django.contrib import messages
+from django.utils import timezone
 
 
 def home(request):
@@ -33,12 +40,10 @@ def bookings(request):
             reservation_slot=data["reservation_slot"],
         )
         return redirect(reverse("bookings"))
-
-    date = request.GET.get("date", datetime.today().date())
-    bookings = Booking.objects.all().filter(booking_date=date)
-    booking_json = serializers.serialize("json", bookings)
+    bookings = Booking.objects.all()
+    print(bookings)
     return render(
-        request, "bookings.html", {"bookings": booking_json}
+        request, "bookings.html", {"bookings": bookings}
     )
 
 
@@ -49,21 +54,23 @@ def book(request):
         if form.is_valid():
             print("=== valid form===")
             form.save()
+            messages.add_message(request, 50, "Booking added")
+            return redirect(book)
     context = {"form": form}
     return render(request, "book.html", context)
 
 
 def menu(request):
-    menu_data = Menu.objects.all()
-    main_data = {"menu": menu_data}
-    return render(request, "menu.html", {"menu": main_data})
-
-
-def display_menu_item(request, pk=None):
-    if pk:
-        menu_item = Menu.objects.get(pk=pk)
-    else:
-        menu_item = ""
+    categories = MenuCategory.objects.all()
     return render(
-        request, "menu_item.html", {"menu_item": menu_item}
+        request, "list_menu.html", {"categories": categories}
+    )
+
+
+def menu_item_detail(request, pk=None):
+    item = get_object_or_404(MenuItem, pk=pk)
+    return render(
+        request,
+        "menu_item_detail.html",
+        {"item": item},
     )
