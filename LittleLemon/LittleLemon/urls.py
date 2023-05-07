@@ -1,21 +1,23 @@
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework import routers
-
-router = routers.DefaultRouter()
-
-""" urlpatterns = [
-    path('api/', include(router.urls)),
-    path('admin/', admin.site.urls),
-] """
-""" urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls'))
-] """
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("restaurant/", include("restaurant.urls")),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.authtoken")),
+    #  restaurant app
+    path("", include("restaurant.urls")),
+    # api endpoints
+    path("api/", include("restaurant.api.urls")),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT
+    )

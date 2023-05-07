@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Booking, Menu
+from restaurant.models import Booking, Menu
 
 
 class MenuItemSerializer(serializers.ModelSerializer):
