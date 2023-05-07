@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # apps
-    "LittleLemonAPI",
     "restaurant",
     # libs
     "rest_framework",
