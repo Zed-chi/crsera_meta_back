@@ -11,7 +11,8 @@ token/login/
 
 Logout[POST]- http://127.0.0.1:8000/api/auth/token/logout/
 
-Bookings - http://127.0.0.1:8000/api/bookings
+Bookings[POST] - http://127.0.0.1:8000/api/bookings
 
-Menu List - http://127.0.0.1:8000/api/menu/", views.M
-MenuItem - http://127.0.0.1:8000/api/menu/<int:pk>",
+Menu List[GET/POST] - http://127.0.0.1:8000/api/menu/
+
+MenuItem[GET] - http://127.0.0.1:8000/api/menu/<int:pk>"
