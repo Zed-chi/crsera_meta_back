@@ -1,11 +1,10 @@
 from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
+
+from restaurant.api.serializers import (BookingSerializer,
+                                        MenuCategorySerializer,
+                                        MenuItemSerializer)
 from restaurant.models import Booking, MenuCategory, MenuItem
-from restaurant.api.serializers import (
-    BookingSerializer,
-    MenuItemSerializer,
-    MenuCategorySerializer,
-)
 
 
 class MenuItemsView(generics.ListCreateAPIView):
@@ -31,4 +30,4 @@ class BookingViewSet(viewsets.ModelViewSet):
 class MenuCategoryViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = MenuCategory.objects.all()
-    serializer_class = BookingSerializer
+    serializer_class = MenuCategorySerializer

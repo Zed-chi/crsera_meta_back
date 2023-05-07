@@ -22,8 +22,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=255)),
-                ("guests_count", models.IntegerField(max_length=6)),
-                ("booking_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "guests_count",
+                    models.IntegerField(max_length=6),
+                ),
+                (
+                    "booking_date",
+                    models.DateTimeField(auto_now_add=True),
+                ),
             ],
         ),
         migrations.CreateModel(
@@ -39,7 +45,12 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("title", models.CharField(max_length=255)),
-                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=10
+                    ),
+                ),
                 ("inventory", models.IntegerField(max_length=5)),
             ],
         ),

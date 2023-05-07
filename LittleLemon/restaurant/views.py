@@ -1,18 +1,12 @@
 import json
-from datetime import datetime
-from django.core import serializers
-from django.http import HttpResponse
-from django.shortcuts import (
-    render,
-    redirect,
-    reverse,
-    get_object_or_404,
-)
-from django.views.decorators.csrf import csrf_exempt
-from restaurant.forms import BookingForm
-from restaurant.models import Booking, MenuItem, MenuCategory
+
 from django.contrib import messages
-from django.utils import timezone
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.views.decorators.csrf import csrf_exempt
+
+from restaurant.forms import BookingForm
+from restaurant.models import Booking, MenuCategory, MenuItem
 
 
 def home(request):
