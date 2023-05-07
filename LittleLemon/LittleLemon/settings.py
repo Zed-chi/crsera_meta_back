@@ -9,23 +9,24 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+from environs import Env
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = Env()
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-trmd*hqza^86_s42iy@^k9f8@ab(m31ms11fuzcdo!+=c%*2w%"
+SECRET_KEY = env.str("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [env.str("ALLOWED_HOSTS", "*")]
 
 
 # Application definition
@@ -82,11 +83,11 @@ WSGI_APPLICATION = "LittleLemon.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "restaurant",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
-        "USER": "admin",
-        "PASSWORD": "123qwe",
+        "NAME": env.str("DB_NAME"),
+        "HOST": env.str("DB_HOST"),
+        "PORT": env.str("DB_PORT"),
+        "USER": env.str("DB_USER"),
+        "PASSWORD": env.str("DB_PASSWORD"),
         "OPTIONS": {"sql_mode": "STRICT_TRANS_TABLES"},
     }
 }
