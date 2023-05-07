@@ -9,9 +9,15 @@
     <div class="row">
       <!--Begin col-->
       <div class="column">
-        <pre id="bookings">
+        {% for item in bookings %}
+        <p>
+          <span>{{item.name}}</span>
+          <span>{{item.guests_count}}</span>
+          <span>{{item.booking_date}}</span>
+          <span>{{item.booking_slot }}</span>
+        </p>
 
-        </pre>
+        {% endfor %}
       </div>
       <!--End col-->
 
