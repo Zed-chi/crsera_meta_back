@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 
 from LittleLemonAPI.models import MenuItem
 from LittleLemonAPI.serializers import MenuItemSerializer
