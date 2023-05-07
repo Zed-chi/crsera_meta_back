@@ -21,7 +21,7 @@ def bookings(request):
     if request.method == "POST":
         data = json.load(request)
         exist = Booking.objects.filter(
-            reservation_date=data["reservation_date"]
+            booking_date=data["reservation_date"]
         ).filter()
         if exist:
             return HttpResponse(
@@ -35,9 +35,7 @@ def bookings(request):
         return redirect(reverse("bookings"))
 
     date = request.GET.get("date", datetime.today().date())
-    bookings = Booking.objects.all().filter(
-        reservation_date=date
-    )
+    bookings = Booking.objects.all().filter(booking_date=date)
     booking_json = serializers.serialize("json", bookings)
     return render(
         request, "bookings.html", {"bookings": booking_json}
